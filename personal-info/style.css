@@ -1,0 +1,236 @@
+body {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    background: #F9F9F9;
+}
+
+
+
+
+/* 
+
+
+.name-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+    gap: 8px;
+    position: absolute;
+    width: 419px;
+    height: 122px;
+    left: calc(50% - 419px / 2 - 624.5px);
+    top: 157px;
+}
+
+.name-input {
+    box-sizing: border-box;
+    width: 371px;
+    height: 48px;
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.last-name-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+    gap: 8px;
+
+    position: absolute;
+    width: 419px;
+    height: 122px;
+    left: calc(50% - 419px / 2 - 197.5px);
+    top: 157px;
+}
+
+.upload-photo-text {
+    position: absolute;
+    width: 232px;
+    height: 22px;
+    left: 150px;
+    top: 325px;
+    font-family: "Helvetica Neue";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #1a1a1a;
+}
+
+.upload-photo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    width: 107px;
+    height: 27px;
+    left: 401px;
+    top: 325px;
+    background: #0e80bf;
+    border-radius: 4px;
+    border: none;
+
+    font-family: "Helvetica Neue";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.about-me-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+    gap: 8px;
+    position: absolute;
+    width: 846px;
+    height: 148px;
+    left: calc(50% - 846px / 2 - 411px);
+    top: 393px;
+}
+
+.about-me-input {
+    box-sizing: border-box;
+    width: 798px;
+    height: 103px;
+    background: #ffffff;
+    border: 1px solid #bcbcbc;
+    border-radius: 4px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 1;
+    padding: 13px 16px 69px 16px;
+    resize: none;
+
+    font-family: "Helvetica Neue";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.email-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 24px;
+    gap: 8px;
+    position: absolute;
+    width: 846px;
+    height: 122px;
+    left: calc(50% - 846px / 2 - 411px);
+    top: 558px;
+}
+
+.email-input {
+    box-sizing: border-box;
+    width: 798px;
+    height: 48px;
+    background: #ffffff;
+    border: 1px solid #bcbcbc;
+    border-radius: 4px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    resize: none;
+    padding: 13px 16px 14px 16px;
+
+    font-family: "Helvetica Neue";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.number-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 24px;
+    gap: 8px;
+    position: absolute;
+    width: 846px;
+    height: 122px;
+    left: calc(50% - 846px / 2 - 411px);
+    top: 693px;
+}
+
+.red-logo {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    left: 78px;
+    top: 994px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.next-btn-location {
+    margin-top: 886px;
+    margin-left: 790px;
+}
+
+.page-number {
+    width: 29px;
+    height: 24px;
+    margin-top: 49px;
+    margin-left: 592px;
+    font-family: "Helvetica Neue";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: right;
+    color: #1a1a1a;
+}
+
+.full-name {
+    display: flex;
+    margin-top: 68px;
+    margin-left: 80px;
+}
+
+#cv-first-name {
+    font-family: "Helvetica Neue";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 42px;
+    color: #f93b1d;
+}
+
+#cv-last-name {
+    font-family: "Helvetica Neue";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 42px;
+    color: #f93b1d;
+    margin-left: 20px;
+}
+
+.hidden {
+    visibility: hidden !important;
+} */

@@ -1,0 +1,52 @@
+.icon-background {
+    width: 40px;
+    height: 40px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    margin-top: 45px;
+    margin-left: 48px;
+}
+
+.back-icon {
+    padding: 12px 16.79px 12px 14px;
+}
+
+.information {
+    display: flex;
+}
+
+.header {
+    margin-top: 47px;
+    margin-left: 61px;
+    width: 193px;
+    height: 29px;
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #1A1A1A;
+}
+
+
+.page-number {
+    margin-top: 49px;
+    margin-left: 592px;
+    width: 29px;
+    height: 24px;
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: right;
+    color: #1A1A1A;
+}
+
+.header-line {
+    width: 813px;
+    height: 0px;
+    border: 1px solid #1A1A1A;
+    margin-left: 150px;
+    margin-top: 3px;
+}
