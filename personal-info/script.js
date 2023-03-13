@@ -6,6 +6,19 @@ const lableAboutMe = document.getElementById("label-about-me");
 const persEndLine = document.getElementById("pers-end-line");
 const photo = document.getElementById("personal-photo");
 
+let selectedImage = "";
+
+photo.addEventListener("change", () => {
+  const fr = new FileReader();
+  fr.readAsDataURL(photo.files[0]);
+  fr.addEventListener("load", () => {
+    const url = fr.result;
+    selectedImage = url;
+    localStorage.setItem("cv-photo", url);
+    document.getElementById("cv-photo").src = url;
+  });
+});
+
 function updateResume(i) {
   const value = localStorage.getItem(i.name);
 
@@ -37,10 +50,10 @@ function updateResume(i) {
 
   if (i.name == "cv-photo") {
     if (value) {
-      document.getElementById(i.name).src = value
+      document.getElementById(i.name).src = value;
     }
   } else {
-    document.getElementById(i.name).textContent = value
+    document.getElementById(i.name).textContent = value;
   }
 }
 
@@ -58,16 +71,3 @@ for (const i of allInputs) {
     });
   }
 }
-
-let selectedImage = "";
-
-photo.addEventListener("change", () => {
-  const fr = new FileReader();
-  fr.readAsDataURL(photo.files[0]);
-  fr.addEventListener("load", () => {
-    const url = fr.result;
-    selectedImage = url;
-    localStorage.setItem("cv-photo", url);
-    document.getElementById("cv-photo").src = url;
-  });
-});
