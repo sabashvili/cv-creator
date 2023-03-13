@@ -7,10 +7,20 @@ const lableAboutMe = document.getElementById("label-about-me")
 function updateResume(i) {
   if (i.name == "cv-email" && i.value != "") {
     emailLogo.classList.remove("hidden")
-  } if (i.name == "cv-number" && i.value != "") {
+  } else if (i.name == "cv-email" && i.value == "") {
+    emailLogo.classList.add("hidden")
+  }
+
+  if (i.name == "cv-number" && i.value != "") {
     phoneLogo.classList.remove("hidden")
-  } if (i.name == "cv-about-me" && i.value != "") {
+  } else if (i.name == "cv-number" && i.value == "") {
+    phoneLogo.classList.add("hidden")
+  }
+
+  if (i.name == "cv-about-me" && i.value != "") {
     lableAboutMe.classList.remove("hidden")
+  } else if (i.name == "cv-about-me" && i.value == "") {
+    lableAboutMe.classList.add("hidden")
   }
   document.getElementById(i.name).textContent = localStorage.getItem(i.name);
 }
