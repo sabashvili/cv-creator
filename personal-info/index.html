@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>პირადი</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../common.css" />
-  </head>
 
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>პირადი</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../common.css" />
+</head>
+
+<body>
+  <div class="left-side">
     <div class="page-information">
       <a id="go-to-restart" href="../index.html">
         <div class="icon-background">
@@ -25,23 +27,13 @@
       <div class="first-and-last-name">
         <div class="form-name">
           <label class="input-label">სახელი</label>
-          <input
-            name="cv-first-name"
-            id="cv-first-name"
-            class="name-input text-input"
-            type="text"
-          />
+          <input name="cv-first-name" id="cv-first-name" class="name-input text-input" type="text" />
           <div class="input-hint">მინიმუმ 2 ასო, ქართული ასოები</div>
         </div>
 
         <div class="form-last-name">
           <label class="input-label">გვარი</label>
-          <input
-            name="cv-last-name"
-            id="cv-last-name"
-            class="name-input text-input"
-            type="text"
-          />
+          <input name="cv-last-name" id="cv-last-name" class="name-input text-input" type="text" />
           <div class="input-hint">მინიმუმ 2 ასო, ქართული ასოები</div>
         </div>
       </div>
@@ -49,47 +41,25 @@
       <div class="form-photo">
         <div class="upload-photo-text">პირადი ფოტოს ატვირთვა</div>
         <label class="upload-photo">
-          <input
-            name="cv-photo"
-            class="label-photo-text"
-            id="cv-photo"
-            type="file"
-          />
+          <input name="cv-photo" class="label-photo-text" id="cv-photo" type="file" />
           <div class="photo-upload-style">ატვირთვა</div>
         </label>
       </div>
 
       <div class="form-about-me">
         <label class="input-label">ჩემ შესახებ (არასავალდებულო)</label>
-        <textarea
-          name="cv-about-me"
-          id="cv-about-me"
-          class="about-me-input text-input"
-          cols="30"
-          rows="10"
-        ></textarea>
+        <textarea name="cv-about-me" id="cv-about-me" class="about-me-input text-input" cols="30" rows="10"></textarea>
       </div>
 
       <div class="form-email">
         <label class="input-label">ელ.ფოსტა</label>
-        <textarea
-          name="cv-email"
-          id="cv-email"
-          class="email-input text-input"
-          cols="30"
-          rows="10"
-        ></textarea>
+        <textarea name="cv-email" id="cv-email" class="email-input text-input" cols="30" rows="10"></textarea>
         <div class="input-hint">უნდა მთავრდებოდეს @redberry.ge-ით</div>
       </div>
 
       <div class="form-number">
         <label class="input-label">მობილურის ნომერი</label>
-        <input
-          name="cv-number"
-          id="cv-number"
-          class="email-input text-input"
-          type="tel"
-        />
+        <input name="cv-number" id="cv-number" class="email-input text-input" type="tel" />
         <div class="input-hint">
           უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
         </div>
@@ -98,27 +68,33 @@
         შემდეგი
       </button>
     </form>
+  </div>
+  <div class="right-side">
+    <div class="resume">
+      <div class="full-name">
+        <div class="output-first-name">შოთა</div>
+        <div class="output-last-name">საბაშვილი</div>
+      </div>
 
-    <!-- <div class="resume">
-    <div class="full-name">
-      <div id="cv-first-name"></div>
-      <div id="cv-last-name"></div>
-    </div>
-    <div id="mail-infromation" class="mail-information hidden">
-      <img class="email-symbol" src="../Images/email symbol.svg" alt="email symbol" />
-      <div id="cv-email" class="email "></div>
-    </div>
-    <img id="cv-photo" class="person-photo" src="" alt="portret" />
-    <div id="tel-information" class="tel-information hidden">
-      <img class="tel-icon" src="../Images/tel.svg" alt="phone" />
-      <div id="cv-number" class="tel"></div>
-    </div>
-    <div id="cv-about-me-label" class="about-me hidden">ჩემს შესახებ</div>
-    <div id="cv-about-me" class="about-me-information"></div>
-    <div id="line-third" class="line-third hidden"></div>
-    <img src="../Images/LOGO-12 1.svg" class="red-logo" alt="LOGO" />
-  </div> -->
+      <div class="mail-infromation">
+        <img class="email-symbol" src="../Images/email symbol.svg" alt="email symbol" />
+        <div class="output-email">sabashvili.shota@gmail.com</div>
+      </div>
 
-    <script src="script.js"></script>
-  </body>
+      <div class="tel-information">
+        <img class="tel-icon" src="../Images/tel.svg" alt="phone" />
+        <div class="output-number">+995 558 18 75 75</div>
+      </div>
+
+      <div class="output-about-me-label">ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ</div>
+      <div class="output-about-me">გამარჯობა მე ვარ შოთა საბაშვილი. ვმუშაობ შპს "საქართველოს გაზის ტრანსპორტირების
+        კომპანიაში" სატრანსპორო უზრუნველყოფის სამმართველოს მთავარი სპეციალისთის პოზიციაზე</div>
+      <img class="output-photo" src="/Images/282199077_7650419048331769_910979448173613367_n.jpeg" alt="portret" />
+      <div class="pers-end-line"></div>
+      <img src="../Images/LOGO-12 1.svg" class="red-star-logo" alt="LOGO" />
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
 </html>
