@@ -1,136 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>პირადი</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../common.css" />
-  </head>
 
-  <body>
-    <div class="left-side">
-      <div class="page-information">
-        <a id="go-to-restart" href="../index.html">
-          <div class="icon-background">
-            <img class="back-icon" src="../Images/Vector.svg" alt="back-icon" />
-          </div>
-        </a>
-        <div class="header">ᲞᲘᲠᲐᲓᲘ ᲘᲜᲤᲝ</div>
-        <div class="page-number">1/3</div>
-      </div>
-      <div class="header-line"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>პირადი</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../common.css" />
+</head>
 
-      <form class="personal-information-form" id="personal-information-form">
-        <div class="first-and-last-name">
-          <div class="form-name">
-            <label class="input-label">სახელი</label>
-            <input
-              name="cv-first-name"
-              class="name-input text-input"
-              type="text"
-            />
-            <div class="input-hint">მინიმუმ 2 ასო, ქართული ასოები</div>
-          </div>
-
-          <div class="form-last-name">
-            <label class="input-label">გვარი</label>
-            <input
-              name="cv-last-name"
-              class="name-input text-input"
-              type="text"
-            />
-            <div class="input-hint">მინიმუმ 2 ასო, ქართული ასოები</div>
-          </div>
+<body>
+  <div class="left-side">
+    <div class="page-information">
+      <a id="go-to-restart" href="../index.html">
+        <div class="icon-background">
+          <img class="back-icon" src="../Images/Vector.svg" alt="back-icon" />
         </div>
-
-        <div class="form-photo">
-          <div class="upload-photo-text">პირადი ფოტოს ატვირთვა</div>
-          <label class="upload-photo">
-            <input
-              name="cv-photo"
-              id="personal-photo"
-              class="label-photo-text"
-              type="file"
-            />
-            <div class="photo-upload-style">ატვირთვა</div>
-          </label>
-        </div>
-
-        <div class="form-about-me">
-          <label class="input-label">ჩემ შესახებ (არასავალდებულო)</label>
-          <textarea
-            name="cv-about-me"
-            class="about-me-input text-input"
-            cols="30"
-            rows="10"
-          ></textarea>
-        </div>
-
-        <div class="form-email">
-          <label class="input-label">ელ.ფოსტა</label>
-          <textarea
-            name="cv-email"
-            class="email-input text-input"
-            cols="30"
-            rows="10"
-          ></textarea>
-          <div class="input-hint">უნდა მთავრდებოდეს @redberry.ge-ით</div>
-        </div>
-
-        <div class="form-number">
-          <label class="input-label">მობილურის ნომერი</label>
-          <input name="cv-number" class="email-input text-input" type="tel" />
-          <div class="input-hint">
-            უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
-          </div>
-        </div>
-        <button
-          id="next-button"
-          class="next-btn next-btn-location"
-          type="submit"
-        >
-          შემდეგი
-        </button>
-      </form>
+      </a>
+      <div class="header">ᲞᲘᲠᲐᲓᲘ ᲘᲜᲤᲝ</div>
+      <div class="page-number">1/3</div>
     </div>
-    <div class="right-side">
-      <div class="resume">
-        <div class="full-name">
-          <div id="cv-first-name" class="output-first-name"></div>
-          <div id="cv-last-name" class="output-last-name"></div>
+    <div class="header-line"></div>
+
+    <form class="personal-information-form" id="personal-information-form">
+      <div class="first-and-last-name">
+        <div class="form-name">
+          <label class="input-label">სახელი</label>
+          <input name="cv-first-name" class="name-input text-input" type="text" />
+          <img class="validation-icon-short-sucsess hidden" src="../Images/sucsess.svg">
+          <img class="validation-icon-short-unsucsess hidden" src="../Images/unsucsess.svg">
+          <div class="input-hint">მინიმუმ 2 ასო, ქართული ასოები</div>
         </div>
 
-        <div class="mail-infromation">
-          <img
-            id="email-logo"
-            class="email-symbol hidden"
-            src="../Images/email symbol.svg"
-            alt="email symbol"
-          />
-          <div id="cv-email" class="output-email"></div>
+        <div class="form-last-name">
+          <label class="input-label">გვარი</label>
+          <input name="cv-last-name" class="name-input text-input" type="text" />
+          <img class="validation-icon-short-sucsess hidden" src="../Images/sucsess.svg">
+          <img class="validation-icon-short-unsucsess hidden" src="../Images/unsucsess.svg">
+          <div class="input-hint">მინიმუმ 2 ასო, ქართული ასოები</div>
         </div>
-
-        <div class="tel-information">
-          <img
-            id="phone-logo"
-            class="tel-icon hidden"
-            src="../Images/tel.svg"
-            alt="phone"
-          />
-          <div id="cv-number" class="output-number"></div>
-        </div>
-
-        <div id="label-about-me" class="output-about-me-label hidden">
-          ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
-        </div>
-        <div id="cv-about-me" class="output-about-me"></div>
-        <img id="cv-photo" class="output-photo" alt="portret" />
-        <div id="pers-end-line" class="pers-end-line hidden"></div>
-        <img src="../Images/LOGO-12 1.svg" class="red-star-logo" alt="LOGO" />
       </div>
+
+      <div class="form-photo">
+        <div class="upload-photo-text">პირადი ფოტოს ატვირთვა</div>
+        <label class="upload-photo">
+          <input name="cv-photo" id="personal-photo" class="label-photo-text" type="file" />
+          <div class="photo-upload-style">ატვირთვა</div>
+        </label>
+      </div>
+
+      <div class="form-about-me">
+        <label class="input-label">ჩემ შესახებ (არასავალდებულო)</label>
+        <textarea name="cv-about-me" class="about-me-input text-input" cols="30" rows="10"></textarea>
+      </div>
+
+      <div class="form-email">
+        <label class="input-label">ელ.ფოსტა</label>
+        <textarea name="cv-email" class="email-input text-input" cols="30" rows="10"></textarea>
+        <img class="validation-icon-short-sucsess hidden" src="../Images/sucsess.svg">
+        <img class="validation-icon-short-unsucsess hidden" src="../Images/unsucsess.svg">
+        <div class="input-hint">უნდა მთავრდებოდეს @redberry.ge-ით</div>
+      </div>
+
+      <div class="form-number">
+        <label class="input-label">მობილურის ნომერი</label>
+        <input maxlength="14" name="cv-number" id="phoneNumber" class="email-input text-input " />
+        <img class="validation-icon-short-sucsess hidden" src="../Images/sucsess.svg">
+        <img class="validation-icon-short-unsucsess hidden" src="../Images/unsucsess.svg">
+        <div class="input-hint">
+          უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
+        </div>
+      </div>
+      <button id="next-button" class="next-btn next-btn-location" type="submit">
+        შემდეგი
+      </button>
+    </form>
+  </div>
+  <div class="right-side">
+    <div class="resume">
+      <div class="full-name">
+        <div id="cv-first-name" class="output-first-name"></div>
+        <div id="cv-last-name" class="output-last-name"></div>
+      </div>
+
+      <div class="mail-infromation">
+        <img id="email-logo" class="email-symbol hidden" src="../Images/email symbol.svg" alt="email symbol" />
+        <div id="cv-email" class="output-email"></div>
+      </div>
+
+      <div class="tel-information">
+        <img id="phone-logo" class="tel-icon hidden" src="../Images/tel.svg" alt="phone" />
+        <div id="cv-number" class="output-number"></div>
+      </div>
+
+      <div id="label-about-me" class="output-about-me-label hidden">
+        ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
+      </div>
+      <div id="cv-about-me" class="output-about-me"></div>
+      <img id="cv-photo" class="output-photo" alt="portret" />
+      <div id="pers-end-line" class="pers-end-line hidden"></div>
+      <img src="../Images/LOGO-12 1.svg" class="red-star-logo" alt="LOGO" />
     </div>
-    <script src="script.js"></script>
-  </body>
+  </div>
+  <script src="script.js"></script>
+</body>
+
 </html>

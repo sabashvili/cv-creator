@@ -5,9 +5,34 @@ const phoneLogo = document.getElementById("phone-logo");
 const lableAboutMe = document.getElementById("label-about-me");
 const persEndLine = document.getElementById("pers-end-line");
 const photo = document.getElementById("personal-photo");
+const phoneNumber = document.getElementById("phoneNumber")
 
+for (const i of allInputs) {
+  updateResume(i);
+  if (i.name != "cv-photo") {
+    i.value = localStorage.getItem(i.name);
+    i.addEventListener("blur", function (e) {
+      localStorage.setItem(i.name, i.value);
+      updateResume(i);
+      const validateResult = validate(i.name, i.value)
+      if (validateResult) {
+        i.classList.add("validation-secsess-color")
+        i.classList.remove("validation-unsecsess-color")
+        i.parentElement.getElementsByClassName("validation-icon-short-sucsess")[0].classList.remove("hidden")
+        i.parentElement.getElementsByClassName("validation-icon-short-unsucsess")[0].classList.add("hidden")
+      } else {
+        i.classList.remove("validation-secsess-color")
+        i.classList.add("validation-unsecsess-color")
+        i.parentElement.getElementsByClassName("validation-icon-short-unsucsess")[0].classList.remove("hidden")
+        i.parentElement.getElementsByClassName("validation-icon-short-sucsess")[0].classList.add("hidden")
+      }
+    });
+  }
+}
+
+
+// photo convertor
 let selectedImage = "";
-
 photo.addEventListener("change", () => {
   const fr = new FileReader();
   fr.readAsDataURL(photo.files[0]);
@@ -19,6 +44,7 @@ photo.addEventListener("change", () => {
   });
 });
 
+//Update resume from inputs
 function updateResume(i) {
   const value = localStorage.getItem(i.name);
 
@@ -57,17 +83,51 @@ function updateResume(i) {
   }
 }
 
+
+// Clear localStorage on back button
 backBtn.addEventListener("click", function (e) {
   localStorage.clear();
 });
 
-for (const i of allInputs) {
-  updateResume(i);
-  if (i.name != "cv-photo") {
-    i.value = localStorage.getItem(i.name);
-    i.addEventListener("blur", function (e) {
-      localStorage.setItem(i.name, i.value);
-      updateResume(i);
-    });
+
+
+// Validation
+function validate(name, value) {
+  if (name == "cv-first-name" || name == "cv-last-name") {
+    return validateMoreThanTwo(value)
+  } else if (name == "cv-email") {
+    return validateEmail(value)
+  } else if (name == "cv-about-me") {
+    return true
+  } else if (name == "cv-number") {
+    return true
   }
 }
+
+// Validation first and last name, where more than two
+function validateMoreThanTwo(value) {
+  if (value.length < 2) {
+    return false
+  } else {
+    return true
+  }
+}
+
+// Validation Email
+function validateEmail(value) {
+  let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@redberry.ge*$/;
+
+  if (value.match(validRegex)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// phoneNumber format
+phoneNumber.addEventListener("keydown", function () {
+  if (phoneNumber.value.length < 2) {
+    const shota = phoneNumber.value.replace("", "+995 ")
+    phoneNumber.value = shota
+  }
+})
