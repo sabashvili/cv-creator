@@ -165,9 +165,7 @@ phoneNumber.addEventListener("keydown", function () {
 
 function allArrayElementAreEqual(array) {
   const result = array.every(element => {
-    if (element === array[0]) {
-      return true;
-    }
+    return element
   });
   return result;
 }
