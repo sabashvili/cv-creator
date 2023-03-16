@@ -6,6 +6,7 @@ const lableAboutMe = document.getElementById("label-about-me");
 const persEndLine = document.getElementById("pers-end-line");
 const photo = document.getElementById("personal-photo");
 const phoneNumber = document.getElementById("phoneNumber")
+const personalInformationForm = document.getElementById("personal-information-form");
 
 // main function
 for (const i of allInputs) {
@@ -16,7 +17,7 @@ for (const i of allInputs) {
       localStorage.setItem(i.name, i.value);
       updateResume(i);
       const validateResult = validate(i.name, i.value)
-      setValidation(i, validateResult);
+      checkValidation(i, validateResult);
     });
   }
 }
@@ -27,8 +28,25 @@ backBtn.addEventListener("click", function (e) {
 });
 
 
+personalInformationForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const allValidationResultArray = []
+  for (const i of allInputs) {
+    if (i.name != "cv-photo") {
+      const validateResult = validate(i.name, i.value)
+      checkValidation(i, validateResult);
+      allValidationResultArray.push(validateResult)
+    }
+  }
+  const finalResultValidation = allArrayElementAreEqual(allValidationResultArray)
+  if (finalResultValidation) {
+    window.location.href = "/experience-info/";
+  }
+})
+
+
 // function about set validation
-function setValidation(i, validateResult) {
+function checkValidation(i, validateResult) {
   if (validateResult) {
     i.classList.add("validation-success-color")
     i.classList.remove("validation-error-color")
@@ -39,10 +57,13 @@ function setValidation(i, validateResult) {
   } else {
     i.classList.remove("validation-success-color")
     i.classList.add("validation-error-color")
-    i.parentElement.getElementsByClassName("validation-icon-error")[0].classList.remove("hidden")
-    i.parentElement.getElementsByClassName("validation-icon-success")[0].classList.add("hidden")
+    if (i.name != "cv-photo") {
+      i.parentElement.getElementsByClassName("validation-icon-error")[0].classList.remove("hidden")
+      i.parentElement.getElementsByClassName("validation-icon-success")[0].classList.add("hidden")
+    }
   }
 }
+
 
 
 // photo convertor
@@ -107,7 +128,9 @@ function validate(name, value) {
   } else if (name == "cv-about-me") {
     return true
   } else if (name == "cv-number") {
-    return true
+    if (value != "" && value.length == 14) {
+      return true
+    } else return false
   }
 }
 
@@ -138,3 +161,13 @@ phoneNumber.addEventListener("keydown", function () {
     phoneNumber.value = shota
   }
 })
+
+
+function allArrayElementAreEqual(array) {
+  const result = array.every(element => {
+    if (element === array[0]) {
+      return true;
+    }
+  });
+  return result;
+}
