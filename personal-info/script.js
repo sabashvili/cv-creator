@@ -7,6 +7,7 @@ const persEndLine = document.getElementById("pers-end-line");
 const photo = document.getElementById("personal-photo");
 const phoneNumber = document.getElementById("phoneNumber")
 
+// main function
 for (const i of allInputs) {
   updateResume(i);
   if (i.name != "cv-photo") {
@@ -15,18 +16,31 @@ for (const i of allInputs) {
       localStorage.setItem(i.name, i.value);
       updateResume(i);
       const validateResult = validate(i.name, i.value)
-      if (validateResult) {
-        i.classList.add("validation-secsess-color")
-        i.classList.remove("validation-unsecsess-color")
-        i.parentElement.getElementsByClassName("validation-icon-short-sucsess")[0].classList.remove("hidden")
-        i.parentElement.getElementsByClassName("validation-icon-short-unsucsess")[0].classList.add("hidden")
-      } else {
-        i.classList.remove("validation-secsess-color")
-        i.classList.add("validation-unsecsess-color")
-        i.parentElement.getElementsByClassName("validation-icon-short-unsucsess")[0].classList.remove("hidden")
-        i.parentElement.getElementsByClassName("validation-icon-short-sucsess")[0].classList.add("hidden")
-      }
+      setValidation(i, validateResult);
     });
+  }
+}
+
+// Clear localStorage on back button
+backBtn.addEventListener("click", function (e) {
+  localStorage.clear();
+});
+
+
+// function about set validation
+function setValidation(i, validateResult) {
+  if (validateResult) {
+    i.classList.add("validation-success-color")
+    i.classList.remove("validation-error-color")
+    if (i.name != "cv-about-me") {
+      i.parentElement.getElementsByClassName("validation-icon-success")[0].classList.remove("hidden")
+      i.parentElement.getElementsByClassName("validation-icon-error")[0].classList.add("hidden")
+    }
+  } else {
+    i.classList.remove("validation-success-color")
+    i.classList.add("validation-error-color")
+    i.parentElement.getElementsByClassName("validation-icon-error")[0].classList.remove("hidden")
+    i.parentElement.getElementsByClassName("validation-icon-success")[0].classList.add("hidden")
   }
 }
 
@@ -82,13 +96,6 @@ function updateResume(i) {
     document.getElementById(i.name).textContent = value;
   }
 }
-
-
-// Clear localStorage on back button
-backBtn.addEventListener("click", function (e) {
-  localStorage.clear();
-});
-
 
 
 // Validation

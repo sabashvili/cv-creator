@@ -224,23 +224,23 @@
 
 /* validation */
 
-.validation-secsess-color {
+.validation-success-color {
     border-color: #98E37E;
 }
 
-.validation-unsecsess-color {
+.validation-error-color {
     border-color: #EF5050;
 }
 
 
-.validation-icon-short-sucsess {
+.validation-icon-success {
     position: absolute;
     /* left: 339.75px; */
     top: 44.75px;
     right: 15.75px;
 }
 
-.validation-icon-short-unsucsess {
+.validation-icon-error {
     position: absolute;
     top: 44.75px;
     right: 15.75px;
