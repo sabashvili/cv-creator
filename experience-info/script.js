@@ -17,3 +17,16 @@ backBtn.addEventListener("click", function (e) {
 });
 
 
+for (const i of allInputs) {
+    updateResume(i)
+    i.value = localStorage.getItem(i.name)
+    i.addEventListener("blur", function (e) {
+        localStorage.setItem(i.name, i.value);
+        updateResume(i)
+    });
+}
+
+function updateResume(i) {
+    const element = document.getElementById(i.name);
+    element.textContent = localStorage.getItem(i.name)
+}
