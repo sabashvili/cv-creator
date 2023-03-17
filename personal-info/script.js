@@ -154,11 +154,12 @@ function validateEmail(value) {
   }
 }
 
+
 // phoneNumber format
 phoneNumber.addEventListener("keydown", function () {
   if (phoneNumber.value.length < 2) {
-    const shota = phoneNumber.value.replace("", "+995 ")
-    phoneNumber.value = shota
+    const numberReplace = phoneNumber.value.replace("", "+995 ")
+    phoneNumber.value = numberReplace
   }
 })
 

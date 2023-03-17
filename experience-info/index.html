@@ -2,14 +2,124 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../common.css" />
+    <title>გამოცდილება</title>
 </head>
 
 <body>
-    <p>shota</p>
+    <div class="left-side">
+        <div class="page-headline">
+            <a id="go-to-restart" href="../index.html">
+                <div class="icon-background">
+                    <img class="back-icon" src="../Images/Vector.svg" alt="back-icon" />
+                </div>
+            </a>
+            <div class="header">ᲒᲐᲛᲝᲪᲓᲘᲚᲔᲑᲐ</div>
+            <div class="page-number">2/3</div>
+        </div>
+        <div class="header-line"></div>
+
+
+        <form id="experience-information-form" class="experience-information">
+            <div id="experience-information-form-conteiner">
+
+                <div class="form-position">
+                    <label class="input-label">თანამდეგობა</label>
+                    <input name="cv-position" class="position-input text-input"
+                        placeholder="დეველოპერი, დიზაინერი, ა.შ." />
+                    <div class="input-hint">მინიმუმ 2 სიმბოლო</div>
+                </div>
+
+                <div class="form-employer">
+                    <label class="input-label">დამსაქმებელი</label>
+                    <input name="cv-empleyer" class="employer-input text-input" />
+                    <div class="input-hint">მინიმუმ 2 სიმბოლო</div>
+                </div>
+
+                <div class="experience-date">
+                    <div class="form-start-work">
+                        <label class="input-label">დაწყების რიცხვი</label>
+                        <input name="cv-start-work" type="date" class="start-work-input text-input" />
+                    </div>
+
+                    <div class="form-end-work">
+                        <label class="input-label">დამთავრების რიცხვი</label>
+                        <input name="cv-end-work" type="date" class="end-work-input text-input" />
+                    </div>
+                </div>
+
+                <div class="form-description">
+                    <label class="input-label">აღწერა</label>
+                    <textarea name="cv-description" class="description-input text-input"
+                        placeholder="როლი თანამდებობაზე და ზოგადი აღწერა" cols="30" rows="10"></textarea>
+                </div>
+
+                <div class="inputs-end-line"></div>
+            </div>
+            <button id="add-more-experience-btn" class="add-more-btn" type="button">
+                მეტი გამოცდილების დამატება
+            </button>
+
+            <div class="buttons">
+                <a href="../personal-info/index.html">
+                    <button class="back-btn back-btn-location" type="button">უკან</button>
+                </a>
+
+                <button class="next-btn next-btn-location" type="submit">
+                    შემდეგი
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="right-side">
+        <div class="right-side">
+            <div class="resume">
+                <div class="full-name">
+                    <div id="cv-first-name" class="output-first-name">შოთა</div>
+                    <div id="cv-last-name" class="output-last-name">საბაშვილი</div>
+                </div>
+
+                <div class="mail-infromation">
+                    <img id="email-logo" class="email-symbol " src="../Images/email symbol.svg" alt="email symbol" />
+                    <div id="cv-email" class="output-email">sabashvili.shota@gmail.com</div>
+                </div>
+
+                <div class="tel-information">
+                    <img id="phone-logo" class="tel-icon" src="../Images/tel.svg" alt="phone" />
+                    <div id="cv-number" class="output-number">+995 558 18 75 75</div>
+                </div>
+
+                <div id="label-about-me" class="output-about-me-label">
+                    ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
+                </div>
+                <div id="cv-about-me" class="output-about-me">გამარჯობა, მე ვმუშაობ საქართველოს გაზის ტრანსპორტირების
+                    კომპანიაში, მთავარი სპეციალისტის პოზიციაზე</div>
+                <img id="cv-photo" class="output-photo" alt="portret" />
+
+                <div id="pers-end-line" class="pers-end-line "></div>
+
+                <div id="experience" class="label-experience">ᲒᲐᲛᲝᲪᲓᲘᲚᲔᲑᲐ</div>
+
+                <div id="position-and-employer" class="output-position-employer">React Native Developer, </div>
+
+                <div id="start-and-end-work" class="output-start-end-work">2020-09-23 - 2020-09-23</div>
+
+                <div id="description-position" class="output-description-position">Experienced Javascript Native
+                    Developer with 5 years in the industry. proficient withreact. Used problem-solving aptitude to
+                    encahge application performance by 14%.created data visualisation tools and integrated designs.
+                </div>
+
+                <div id="line-from-description-position" class="line-from-description-position"></div>
+
+                <img src="../Images/LOGO-12 1.svg" class="red-star-logo" alt="LOGO" />
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
