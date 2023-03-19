@@ -5,8 +5,10 @@ const phoneLogo = document.getElementById("phone-logo");
 const lableAboutMe = document.getElementById("label-about-me");
 const persEndLine = document.getElementById("pers-end-line");
 const photo = document.getElementById("personal-photo");
-const phoneNumber = document.getElementById("phoneNumber")
-const personalInformationForm = document.getElementById("personal-information-form");
+const phoneNumber = document.getElementById("phoneNumber");
+const personalInformationForm = document.getElementById(
+  "personal-information-form"
+);
 
 // main function
 for (const i of allInputs) {
@@ -16,7 +18,7 @@ for (const i of allInputs) {
     i.addEventListener("blur", function (e) {
       localStorage.setItem(i.name, i.value);
       updateResume(i);
-      const validateResult = validate(i.name, i.value)
+      const validateResult = validate(i.name, i.value);
       checkValidation(i, validateResult);
     });
   }
@@ -27,46 +29,52 @@ backBtn.addEventListener("click", function (e) {
   localStorage.clear();
 });
 
-
 personalInformationForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  const allValidationResultArray = []
+  const allValidationResultArray = [];
   for (const i of allInputs) {
     if (i.name != "cv-photo") {
-      const validateResult = validate(i.name, i.value)
+      const validateResult = validate(i.name, i.value);
       checkValidation(i, validateResult);
-      allValidationResultArray.push(validateResult)
+      allValidationResultArray.push(validateResult);
     }
   }
-  const finalResultValidation = allArrayElementAreEqual(allValidationResultArray)
+  const finalResultValidation = allArrayElementAreEqual(
+    allValidationResultArray
+  );
   if (finalResultValidation) {
     window.location.href = "/experience-info/";
   }
-})
-
+});
 
 // function about set validation
 function checkValidation(i, validateResult) {
   if (validateResult) {
-    i.classList.add("validation-success-color")
-    i.classList.remove("validation-error-color")
+    i.classList.add("validation-success-color");
+    i.classList.remove("validation-error-color");
     if (i.name != "cv-about-me") {
-      i.parentElement.getElementsByClassName("validation-icon-success")[0].classList.remove("hidden")
-      i.parentElement.getElementsByClassName("validation-icon-error")[0].classList.add("hidden")
+      i.parentElement
+        .getElementsByClassName("validation-icon-success")[0]
+        .classList.remove("hidden");
+      i.parentElement
+        .getElementsByClassName("validation-icon-error")[0]
+        .classList.add("hidden");
     }
   } else {
-    i.classList.remove("validation-success-color")
-    i.classList.add("validation-error-color")
+    i.classList.remove("validation-success-color");
+    i.classList.add("validation-error-color");
     if (i.name != "cv-photo") {
-      i.parentElement.getElementsByClassName("validation-icon-error")[0].classList.remove("hidden")
-      i.parentElement.getElementsByClassName("validation-icon-success")[0].classList.add("hidden")
+      i.parentElement
+        .getElementsByClassName("validation-icon-error")[0]
+        .classList.remove("hidden");
+      i.parentElement
+        .getElementsByClassName("validation-icon-success")[0]
+        .classList.add("hidden");
     }
   }
 }
 
-
-
-// photo convertor
+// photo convertor and save in localStorage
 let selectedImage = "";
 photo.addEventListener("change", () => {
   const fr = new FileReader();
@@ -118,28 +126,27 @@ function updateResume(i) {
   }
 }
 
-
 // Validation
 function validate(name, value) {
   if (name == "cv-first-name" || name == "cv-last-name") {
-    return validateMoreThanTwo(value)
+    return validateMoreThanTwo(value);
   } else if (name == "cv-email") {
-    return validateEmail(value)
+    return validateEmail(value);
   } else if (name == "cv-about-me") {
-    return true
+    return true;
   } else if (name == "cv-number") {
     if (value != "" && value.length == 14) {
-      return true
-    } else return false
+      return true;
+    } else return false;
   }
 }
 
 // Validation first and last name, where more than two
 function validateMoreThanTwo(value) {
   if (value.length < 2) {
-    return false
+    return false;
   } else {
-    return true
+    return true;
   }
 }
 
@@ -154,19 +161,17 @@ function validateEmail(value) {
   }
 }
 
-
 // phoneNumber format
 phoneNumber.addEventListener("keydown", function () {
   if (phoneNumber.value.length < 2) {
-    const numberReplace = phoneNumber.value.replace("", "+995 ")
-    phoneNumber.value = numberReplace
+    const numberReplace = phoneNumber.value.replace("", "+995 ");
+    phoneNumber.value = numberReplace;
   }
-})
-
+});
 
 function allArrayElementAreEqual(array) {
-  const result = array.every(element => {
-    return element
+  const result = array.every((element) => {
+    return element;
   });
   return result;
 }
