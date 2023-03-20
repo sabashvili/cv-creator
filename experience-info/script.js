@@ -1,7 +1,10 @@
 const backBtn = document.getElementById("go-to-restart");
+const startInputElement = document.querySelectorAll("input, textarea");
 let allInputs = document.querySelectorAll("input, textarea");
 const resumePersonalInfo = document.getElementById("peronal-info-output");
 const allResumeDiv = resumePersonalInfo.querySelectorAll("div, img");
+const resumeExperienceInfo = document.getElementById("experience-info-output-container")
+const allExperienceOutputDiv = resumeExperienceInfo.querySelectorAll("div")
 const workTimeConection = document.getElementById("start-conection-end-work");
 const positionComma = document.getElementById("position-comma");
 const experienceText = document.getElementById("experience");
@@ -12,6 +15,17 @@ const experienceFormChildren = document.getElementById("experience-information-f
 const experienceOutput = document.getElementById("experience-info-output");
 let booleanObj = {};
 let formNumberCounter = 0;
+let inputsArr = [];
+
+arrCreator(startInputElement);
+for (const i of startInputElement) {
+    const element = document.getElementById(i.name);
+    const local = JSON.parse(localStorage.getItem("inputs-arr"))
+    i.addEventListener("blur", function () {
+        element.textContent = local[0][i.name]
+    })
+}
+
 
 // Clear localStorage on back button
 backBtn.addEventListener("click", function (e) {
@@ -30,64 +44,13 @@ for (const i of allResumeDiv) {
     }
 }
 
-
-
 addMoreExperience.addEventListener("click", function (e) {
     duplicateForm();
     duplicateOutput();
-    // for (const i of experienceFormChildren.children) {
-    //     console.log(i);
-    // }
-
-
 });
 
-for (const i of allInputs) {
-    i.value = localStorage.getItem(i.name);
-    updateResume(i);
-    i.addEventListener("blur", function (e) {
-        localStorage.setItem(i.name, i.value);
-        updateResume(i);
-    });
-}
 
 
-function updateResume(i) {
-    const element = document.getElementById(i.name);
-    if (i.name == "cv-position") {
-        if (i.value) {
-            positionComma.classList.remove("hidden");
-        } else {
-            positionComma.classList.add("hidden");
-        }
-    }
-
-    if (i.name == "cv-end-work") {
-        if (i.value) {
-            workTimeConection.classList.remove("hidden");
-        } else {
-            workTimeConection.classList.add("hidden");
-        }
-    }
-
-    //Experience text show and hide
-    booleanObj[i.name] = Boolean(i.value);
-    if (
-        booleanObj["cv-position"] ||
-        booleanObj["cv-start-work"] ||
-        booleanObj["cv-end-work"] ||
-        booleanObj["cv-description"] ||
-        booleanObj["cv-empleyer"]
-    ) {
-        experienceText.classList.remove("hidden");
-        lastLine.classList.remove("hidden");
-    } else {
-        experienceText.classList.add("hidden");
-        lastLine.classList.add("hidden");
-    }
-
-    element.textContent = localStorage.getItem(i.name);
-}
 
 function duplicateForm() {
     const originalFormSet = document.getElementById(
@@ -98,7 +61,10 @@ function duplicateForm() {
     formNumberCounter++;
     newFormSet.id = `experience-information-form-conteiner-${formNumberCounter}`;
     experienceFormChildren.appendChild(newFormSet)
-    console.log(allInputs);
+
+
+    const newFormSetInputs = newFormSet.querySelectorAll("input, textarea");
+    arrCreator(newFormSetInputs);
 }
 
 function duplicateOutput() {
@@ -117,6 +83,69 @@ function duplicateOutput() {
     }
 }
 
-function saveLocalStorage(x) {
 
+function arrCreator(selector) {
+    const InputsObject = {};
+    for (const i of selector) {
+        i.addEventListener("blur", function () {
+            InputsObject[i.name] = i.value
+            localStorage.setItem("inputs-arr", JSON.stringify(inputsArr))
+        })
+
+    }
+    inputsArr.push(InputsObject)
 }
+
+
+
+
+
+
+// function mainCodeforLocalStorage() {
+//     for (const i of allInputs) {
+//         i.value = localStorage.getItem(i.name);
+//         updateResume(i);
+//         i.addEventListener("blur", function (e) {
+//             localStorage.setItem(i.name, i.value);
+//             updateResume(i);
+//         });
+//     }
+// }
+
+
+// function updateResume(i) {
+//     const element = document.getElementById(i.name);
+//     if (i.name == "cv-position") {
+//         if (i.value) {
+//             positionComma.classList.remove("hidden");
+//         } else {
+//             positionComma.classList.add("hidden");
+//         }
+//     }
+
+//     if (i.name == "cv-end-work") {
+//         if (i.value) {
+//             workTimeConection.classList.remove("hidden");
+//         } else {
+//             workTimeConection.classList.add("hidden");
+//         }
+//     }
+
+//     //Experience text show and hide
+//     booleanObj[i.name] = Boolean(i.value);
+//     if (
+//         booleanObj["cv-position"] ||
+//         booleanObj["cv-start-work"] ||
+//         booleanObj["cv-end-work"] ||
+//         booleanObj["cv-description"] ||
+//         booleanObj["cv-empleyer"]
+//     ) {
+//         experienceText.classList.remove("hidden");
+//         lastLine.classList.remove("hidden");
+//     } else {
+//         experienceText.classList.add("hidden");
+//         lastLine.classList.add("hidden");
+//     }
+
+//     element.textContent = localStorage.getItem(i.name);
+// }
