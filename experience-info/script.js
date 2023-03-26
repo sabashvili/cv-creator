@@ -1,11 +1,8 @@
 const backBtn = document.getElementById("go-to-restart");
 const startInputElement = document.querySelectorAll("input, textarea");
-let allInputs = document.querySelectorAll("input, textarea");
 const resumePersonalInfo = document.getElementById("peronal-info-output");
 const allResumeDiv = resumePersonalInfo.querySelectorAll("div, img");
-const resumeExperienceInfo = document.getElementById(
-  "experience-info-output-container-0"
-);
+const resumeExperienceInfo = document.getElementById("experience-info-output-container-0");
 const allExperienceOutputDiv = resumeExperienceInfo.querySelectorAll("div");
 const workTimeConection = document.getElementById("start-conection-end-work");
 const positionComma = document.getElementById("position-comma");
@@ -13,22 +10,11 @@ const experienceText = document.getElementById("experience");
 const lastLine = document.getElementById("line-from-description-position");
 const addMoreExperience = document.getElementById("add-more-experience-btn");
 const experienceForm = document.getElementById("experience-information-form");
-const experienceFormChildren = document.getElementById(
-  "experience-information-form-children"
-);
+const experienceFormChildren = document.getElementById("experience-information-form-children");
 const experienceOutput = document.getElementById("experience-info-output");
 let booleanObj = {};
-let formNumberCounter = 0;
+let extraExperienceFormCounter = 0;
 let inputsArr = [];
-
-arrCreator(startInputElement);
-for (const i of startInputElement) {
-  const element = document.getElementById(i.name);
-  const local = JSON.parse(localStorage.getItem("inputs-arr"));
-  i.addEventListener("blur", function () {
-    element.textContent = local[0][i.name];
-  });
-}
 
 // Clear localStorage on back button
 backBtn.addEventListener("click", function (e) {
@@ -48,76 +34,11 @@ for (const i of allResumeDiv) {
 }
 
 addMoreExperience.addEventListener("click", function (e) {
-  duplicateForm();
-  duplicateOutput();
+  extraExperienceFormCounter++;
+  duplicateForm(extraExperienceFormCounter);
+  duplicateOutput(extraExperienceFormCounter);
+  localStorage.setItem("extraExperienceFormCounter", extraExperienceFormCounter);
 });
-
-function duplicateForm() {
-  const originalFormSet = document.getElementById(
-    "experience-information-form-conteiner-0"
-  );
-  const newFormSet = document.createElement("div");
-  newFormSet.innerHTML = originalFormSet.innerHTML;
-  formNumberCounter++;
-  newFormSet.id = `experience-information-form-conteiner-${formNumberCounter}`;
-  experienceFormChildren.appendChild(newFormSet);
-
-  const newFormSetInputs = newFormSet.querySelectorAll("input, textarea");
-  arrCreator(newFormSetInputs);
-}
-
-function duplicateOutput() {
-  const originalOutoutSet = document.getElementById(
-    "experience-info-output-container-0"
-  );
-  const newOutputSet = document.createElement("div");
-  newOutputSet.innerHTML = originalOutoutSet.innerHTML;
-  newOutputSet.id = `experience-info-output-container-${formNumberCounter}`;
-  const allInputsInNewOutputSet = newOutputSet.querySelectorAll("div");
-  experienceOutput.appendChild(newOutputSet);
-  for (const i of allInputsInNewOutputSet) {
-    for (const x of i.childNodes) {
-      x.textContent = "";
-    }
-  }
-}
-
-function arrCreator(selector) {
-  const InputsObject = {};
-  for (const i of selector) {
-    i.addEventListener("blur", function () {
-      InputsObject[i.name] = i.value;
-      localStorage.setItem("inputs-arr", JSON.stringify(inputsArr));
-      console.log(i.parentNode.parentNode);
-      const experienceIndex = i.parentNode.parentNode.id.split(
-        "experience-information-form-conteiner-"
-      )[1];
-      console.log(i.parentNode.parentNode.id, experienceIndex);
-      updateResume(experienceIndex, i);
-    });
-  }
-  inputsArr.push(InputsObject);
-}
-
-// function mainCodeforLocalStorage() {
-//     for (const i of allInputs) {
-//         i.value = localStorage.getItem(i.name);
-//         updateResume(i);
-//         i.addEventListener("blur", function (e) {
-//             localStorage.setItem(i.name, i.value);
-//             updateResume(i);
-//         });
-//     }
-// }
-
-function updateResume(formIndex, formElement) {
-  const experienceOutput = document.getElementById(
-    `experience-info-output-container-${formIndex}`
-  );
-  console.log(formIndex, formElement, experienceOutput);
-  const element = experienceOutput.name(formElement.name);
-  element.textContent = localStorage.getItem(formElement.name);
-}
 
 // if (i.name == "cv-position") {
 //     if (i.value) {
@@ -150,3 +71,61 @@ function updateResume(formIndex, formElement) {
 //     experienceText.classList.add("hidden");
 //     lastLine.classList.add("hidden");
 //   }
+
+function addBlurs(inputElements) {
+  for (const element of inputElements) {
+    element.value = localStorage.getItem(element.name);
+    updateResume(element);
+    element.addEventListener("blur", function () {
+      localStorage.setItem(element.name, element.value);
+      updateResume(element);
+    });
+  }
+}
+
+extraExperienceFormCounter = localStorage.getItem("extraExperienceFormCounter");
+for (let i = 0; i < extraExperienceFormCounter; i++) {
+  const newFormFields = duplicateForm(i + 1);
+  duplicateOutput(i + 1);
+
+  addBlurs(newFormFields);
+}
+
+addBlurs(startInputElement);
+
+function duplicateForm(counter) {
+  const originalFormSet = document.getElementById("experience-information-form-conteiner-0");
+  const newFormSet = document.createElement("div");
+  newFormSet.innerHTML = originalFormSet.innerHTML;
+
+  newFormSet.id = `experience-information-form-conteiner-${counter}`;
+
+  const newFormSetInputs = newFormSet.querySelectorAll("input, textarea");
+  for (const newFormElement of newFormSetInputs) {
+    newFormElement.name = `${newFormElement.name}-${counter}`;
+    newFormElement.addEventListener("blur", function () {
+      localStorage.setItem(newFormElement.name, newFormElement.value);
+      updateResume(newFormElement);
+    });
+  }
+  experienceFormChildren.appendChild(newFormSet);
+  return newFormSetInputs;
+}
+
+function duplicateOutput(counter) {
+  const originalOutoutSet = document.getElementById("experience-info-output-container-0");
+  const newOutputSet = document.createElement("div");
+  newOutputSet.innerHTML = originalOutoutSet.innerHTML;
+  newOutputSet.id = `experience-info-output-container-${counter}`;
+  const newOutputSetResume = newOutputSet.getElementsByClassName("cv-field");
+  for (const newOutputElement of newOutputSetResume) {
+    newOutputElement.id = `${newOutputElement.id}-${counter}`;
+    newOutputElement.textContent = "";
+  }
+  experienceOutput.appendChild(newOutputSet);
+}
+
+function updateResume(element) {
+  const value = localStorage.getItem(element.name);
+  document.getElementById(element.name).textContent = value;
+}
