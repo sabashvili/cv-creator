@@ -265,7 +265,7 @@
 
 .red-star-logo {
   position: absolute;
-  top: 994px;
+  bottom: 44px;
   left: 1176px;
 }
 
@@ -308,7 +308,7 @@
   line-height: 19px;
   display: flex;
   color: #919191;
-  margin-top: 7px;
+  margin-top: 8px;
   margin-left: 80px;
 }
 
