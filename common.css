@@ -355,13 +355,12 @@
 
 .validation-icon-success {
   position: absolute;
-  /* left: 339.75px; */
-  top: 44.75px;
-  right: 15.75px;
+  top: 42.75px;
+  right: 36.75px;
 }
 
 .validation-icon-error {
   position: absolute;
-  top: 44.75px;
-  right: 15.75px;
+  top: 42.75px;
+  right: 36.75px;
 }

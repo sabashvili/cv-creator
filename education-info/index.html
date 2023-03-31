@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>განათლება</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../common.css" />
+</head>
+
+<body>
+    <div class="left-side">
+        <div class="page-headline">
+            <a id="go-to-restart" href="../index.html">
+                <div class="icon-background">
+                    <img class="back-icon" src="../Images/Vector.svg" alt="back-icon" />
+                </div>
+            </a>
+            <div class="header">ᲒᲐᲜᲐᲗᲚᲔᲑᲐ</div>
+            <div class="page-number">3/3</div>
+        </div>
+        <div class="header-line"></div>
+
+        <form class="eduation-form">
+            <div class="form-university">
+                <label class="input-label">სასწავლებელი</label>
+                <input class="university-input text-input" />
+                <div class="input-hint">მინიმუმ 2 სიმბოლო</div>
+            </div>
+
+            <div class="about-degree">
+                <div class="form-degree">
+                    <label class="input-label">ხარისხი</label>
+                    <div id="dropdown-input" class="dropdown-input">
+                        <input type="button" value="აირჩიეთ ხარისხი" class="degree-input text-input"
+                            id="degree-input" />
+                        <img class="arrow" src="../Images/dropdown.svg" />
+                    </div>
+                    <ul id="list" class="list-degree hidden">
+                        <li class="elements">საშუალო სკოლის დიპლომი</li>
+                        <li class="elements">ზოგად საგანმანათლებლო დიპლომი</li>
+                        <li class="elements">ბაკალავრი</li>
+                        <li class="elements">მაგისტრი</li>
+                        <li class="elements">დოქტორი</li>
+                        <li class="elements">ასოცირებული ხარისხი</li>
+                        <li class="elements">სტუდენტი</li>
+                        <li class="elements">კოლეჯი (ხარისხის გარეშე)</li>
+                        <li class="elements">სხვა</li>
+                    </ul>
+                </div>
+
+                <div class="degree-end-form">
+                    <label class="input-label">დამთავრების რიცხვი</label>
+                    <input type="date" class="degree-end-input text-input" />
+                </div>
+            </div>
+
+            <div class="description-education-form">
+                <label class="input-label">აღწერა</label>
+                <textarea class="description-education-input text-input" cols="30" rows="10"></textarea>
+            </div>
+
+            <div class="line-education"></div>
+
+            <button class="more-education-btn" type="button">
+                სხვა სასწავლებლის დამატება
+            </button>
+
+            <div class="buttons">
+                <a href="../experience-info/index.html">
+                    <button class="back-btn back-btn-location" type="button">
+                        უკან
+                    </button>
+                </a>
+
+                <button class="next-btn next-btn-location" type="submit">
+                    შემდეგი
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div id="resume-side" class="right-side">
+        <div class="resume">
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

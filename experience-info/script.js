@@ -2,19 +2,12 @@ const backBtn = document.getElementById("go-to-restart");
 const startInputElement = document.querySelectorAll("input, textarea");
 const resumePersonalInfo = document.getElementById("peronal-info-output");
 const allResumeDiv = resumePersonalInfo.querySelectorAll("div, img");
-const resumeExperienceInfo = document.getElementById("experience-info-output-container-0");
-const allExperienceOutputDiv = resumeExperienceInfo.querySelectorAll("div");
-const workTimeConection = document.getElementById("start-conection-end-work");
-const positionComma = document.getElementById("position-comma");
-const experienceText = document.getElementById("experience");
-const lastLine = document.getElementById("line-from-description-position");
 const addMoreExperience = document.getElementById("add-more-experience-btn");
 const experienceForm = document.getElementById("experience-information-form");
 const experienceFormChildren = document.getElementById("experience-information-form-children");
 const experienceOutput = document.getElementById("experience-info-output");
-let booleanObj = {};
 let extraExperienceFormCounter = 0;
-let inputsArr = [];
+
 
 // Clear localStorage on back button
 backBtn.addEventListener("click", function (e) {
@@ -51,6 +44,26 @@ for (let i = 0; i < extraExperienceFormCounter; i++) {
   addBlurs(newFormFields);
 }
 
+
+experienceForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const allValidationResultArray = [];
+  const finalInputElements = document.querySelectorAll("input, textarea");
+  for (const element of finalInputElements) {
+    const validateResult = validate(element.name, element.value);
+    checkValidation(element, validateResult);
+    allValidationResultArray.push(validateResult)
+  }
+  const finalResultValidation = allArrayElementAreEqual(
+    allValidationResultArray
+  );
+  if (finalResultValidation) {
+    window.location.href = "../education-info/";
+  }
+
+})
+
+
 // add blur listener
 function addBlurs(inputElements) {
   for (const element of inputElements) {
@@ -59,6 +72,8 @@ function addBlurs(inputElements) {
     element.addEventListener("blur", function () {
       localStorage.setItem(element.name, element.value);
       updateResume(element);
+      const validateResult = validate(element.name, element.value);
+      checkValidation(element, validateResult);
     });
   }
 }
@@ -73,10 +88,21 @@ function duplicateForm(counter, addBlurListener) {
   const newFormSetInputs = newFormSet.querySelectorAll("input, textarea");
   for (const newFormElement of newFormSetInputs) {
     newFormElement.name = `${newFormElement.name}-${counter}`;
+
+    newFormElement.parentElement
+      .getElementsByClassName("validation-icon-success")[0].classList.add("hidden")
+    newFormElement.parentElement
+      .getElementsByClassName("validation-icon-error")[0].classList.add("hidden")
+    newFormElement.classList.remove("validation-success-color");
+    newFormElement.classList.remove("validation-error-color");
+
+
     if (addBlurListener) {
       newFormElement.addEventListener("blur", function () {
         localStorage.setItem(newFormElement.name, newFormElement.value);
         updateResume(newFormElement);
+        const validateResult = validate(newFormElement.name, newFormElement.value);
+        checkValidation(newFormElement, validateResult);
       });
     }
   }
@@ -120,6 +146,61 @@ function updateResume(element) {
       outPutParentElement.getElementsByClassName("hyphen")[0].classList.add("hidden");
     }
   }
-
   document.getElementById(element.name).textContent = value;
 }
+
+
+function validate(name, value) {
+  if (name.startsWith("cv-position") || name.startsWith("cv-empleyer")) {
+    return validateMoreThanTwo(value);
+  }
+  if (name.startsWith("cv-start-work") || name.startsWith("cv-end-work")) {
+    if (value) {
+      return true
+    }
+  }
+  if (name.startsWith("cv-description")) {
+    return true
+  }
+}
+
+function validateMoreThanTwo(value) {
+  if (value.length < 2) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function checkValidation(i, validateResult) {
+  if (validateResult) {
+    i.classList.add("validation-success-color");
+    i.classList.remove("validation-error-color");
+    i.parentElement
+      .getElementsByClassName("validation-icon-success")[0]
+      .classList.remove("hidden");
+    i.parentElement
+      .getElementsByClassName("validation-icon-error")[0]
+      .classList.add("hidden");
+  } else {
+    i.classList.remove("validation-success-color");
+    i.classList.add("validation-error-color");
+    i.parentElement
+      .getElementsByClassName("validation-icon-error")[0]
+      .classList.remove("hidden");
+    i.parentElement
+      .getElementsByClassName("validation-icon-success")[0]
+      .classList.add("hidden");
+  }
+}
+
+
+function allArrayElementAreEqual(array) {
+  const result = array.every((element) => {
+    return element;
+  });
+  return result;
+}
+
+
+

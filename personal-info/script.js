@@ -43,7 +43,7 @@ personalInformationForm.addEventListener("submit", function (e) {
     allValidationResultArray
   );
   if (finalResultValidation) {
-    window.location.href = "/experience-info/";
+    window.location.href = "../experience-info/";
   }
 });
 

@@ -7,25 +7,17 @@ body {
     display: flex;
 }
 
-.experience-information {
-    overflow: scroll;
-    height: 1000px;
-}
-
-
-
-.form-position {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    width: 798px;
+.form-university {
+    margin-left: 150px;
     margin-top: 77px;
-    margin-left: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 846px;
 }
 
-.position-input {
+.university-input {
     box-sizing: border-box;
     width: 798px;
     height: 48px;
@@ -38,20 +30,25 @@ body {
     flex-grow: 0;
 }
 
-.form-employer {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    width: 798px;
+
+.about-degree {
     margin-left: 150px;
     margin-top: 31px;
+    display: flex;
 }
 
-.employer-input {
+
+.form-degree {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
+}
+
+.degree-input {
     box-sizing: border-box;
-    width: 798px;
+    width: 371px;
     height: 48px;
     background: #FFFFFF;
     border: 1px solid #BCBCBC;
@@ -62,77 +59,78 @@ body {
     flex-grow: 0;
 }
 
-.experience-date {
+.arrow {
+    position: absolute;
+    top: 50.87px;
+    left: 341.85px;
+}
+
+
+.degree-end-form {
     display: flex;
-    margin-top: 31px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-left: 56px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    width: 371px;
+    height: 369px;
+    filter: drop-shadow(0px 16px 28px rgba(0, 0, 0, 0.24));
+    border-radius: 4px;
+    margin: 0px;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 10px 10px 16px;
+    gap: 10px;
+    width: 346px;
+    height: 21px;
+    background: #ffffff;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    cursor: pointer;
+}
+
+
+
+.degree-end-input {
+    box-sizing: border-box;
+    width: 371px;
+    height: 48px;
+    background: #FFFFFF;
+    border: 1px solid #BCBCBC;
+    border-radius: 4px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+
+.description-education-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
     margin-left: 150px;
+    margin-top: 26px;
 }
 
-.form-start-work {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    width: 371px;
-
-}
-
-.start-work-input {
-    box-sizing: border-box;
-    width: 371px;
-    height: 48px;
-    background: #FFFFFF;
-    border: 1px solid #BCBCBC;
-    border-radius: 4px;
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
-}
-
-
-.form-end-work {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    width: 371px;
-    padding-left: 56px;
-}
-
-.end-work-input {
-    box-sizing: border-box;
-    width: 371px;
-    height: 48px;
-    background: #FFFFFF;
-    border: 1px solid #BCBCBC;
-    border-radius: 4px;
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
-}
-
-.form-description {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-
-    width: 798px;
-    height: 168px;
-    margin-left: 150px;
-    margin-top: 33px;
-
-}
-
-.description-input {
+.description-education-input {
     box-sizing: border-box;
     width: 798px;
-    height: 123px;
+    height: 179px;
     background: #FFFFFF;
     border: 1px solid #BCBCBC;
     border-radius: 4px;
@@ -143,18 +141,16 @@ body {
     resize: none;
 }
 
-
-.inputs-end-line {
+.line-education {
     width: 798px;
     height: 0px;
-    margin-top: 58px;
-    margin-left: 149px;
-
+    margin-left: 150px;
+    margin-top: 53px;
     border: 1px solid #C1C1C1;
 }
 
-.add-more-btn {
-    margin-left: 149px;
+.more-education-btn {
+    margin-left: 150px;
     margin-top: 45px;
     display: flex;
     flex-direction: row;
@@ -163,6 +159,7 @@ body {
     gap: 20px;
     width: 289px;
     height: 48px;
+
     background: #62a1eb;
     border-radius: 4px;
     border: none;
@@ -178,14 +175,12 @@ body {
     flex-grow: 0;
 }
 
-
 .buttons {
-    margin-top: 115px;
-    margin-left: 150px;
     display: flex;
+    margin-top: 200px;
+    margin-left: 150px;
 }
 
-
 .next-btn-location {
-    margin-left: 534px;
+    margin-left: 525px;
 }
