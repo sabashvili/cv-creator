@@ -8,6 +8,9 @@ let allResumeDiv = resumeInfo.querySelectorAll("div, img");
 const addMoreEducationBtn = document.getElementById("add-more-education-btn");
 const experienceOutput = document.getElementById("experience-info-output");
 const extraExperienceFormCounter = localStorage.getItem("extraExperienceFormCounter");
+const educationFormChildren = document.getElementById("education-information-form-children");
+let extraEducationFormCounter = 0
+const educationOutputChildren = document.getElementById("education-info-output")
 
 // add previus Experience forms
 for (let i = 0; i < extraExperienceFormCounter; i++) {
@@ -68,11 +71,46 @@ document.addEventListener("click", (e) => {
     }
 });
 
+addMoreEducationBtn.addEventListener("click", function () {
+    extraEducationFormCounter++
+    duplicateForm(extraEducationFormCounter)
+    duplicateOutput(extraEducationFormCounter)
+})
 
 
 
+function duplicateForm(counter) {
+    const originalFormSet = document.getElementById("education-information-form-conteiner-0")
+    const newFormSet = document.createElement("div")
+    newFormSet.innerHTML = originalFormSet.innerHTML
+
+    newFormSet.id = `education-information-form-conteiner-${counter}`
+    const newFormSetInputs = newFormSet.querySelectorAll("input, textarea");
+    for (const newFormElement of newFormSetInputs) {
+        newFormElement.name = `${newFormElement.name}-${counter}`
 
 
+        newFormElement.addEventListener("blur", function () {
+            localStorage.setItem(newFormElement.name, newFormElement.value)
+        })
+    }
+    educationFormChildren.appendChild(newFormSet)
+}
+
+function duplicateOutput(counter) {
+    const originalOutputSet = document.getElementById("education-info-output-container-0")
+    const newOutputSet = document.createElement("div")
+    newOutputSet.innerHTML = originalOutputSet.innerHTML
+    newOutputSet.id = `education-info-output-container-${counter}`
+    const newOutputSetResume = newOutputSet.getElementsByClassName("cv-field");
+    for (const newOutputElement of newOutputSetResume) {
+        newOutputElement.id = `${newOutputElement.id}-${counter}`
+        newOutputElement.textContent = "";
+    }
+
+    educationOutputChildren.appendChild(newOutputSet)
+
+}
 
 
 
