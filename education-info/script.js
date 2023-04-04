@@ -63,6 +63,9 @@ function setValueList(listElements, formDegree, listItem) {
         item.addEventListener("click", function (e) {
             formDegree.value = e.target.textContent;
             listItem.classList.toggle("hidden");
+
+            localStorage.setItem(formDegree.name, formDegree.value)
+            updateResume(formDegree)
         });
     }
 }
