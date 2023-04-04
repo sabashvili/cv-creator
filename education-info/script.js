@@ -11,6 +11,8 @@ const extraExperienceFormCounter = localStorage.getItem("extraExperienceFormCoun
 const educationFormChildren = document.getElementById("education-information-form-children");
 let extraEducationFormCounter = 0
 const educationOutputChildren = document.getElementById("education-info-output")
+const startInputElement = document.querySelectorAll("input, textarea");
+
 
 // add previus Experience forms
 for (let i = 0; i < extraExperienceFormCounter; i++) {
@@ -30,22 +32,6 @@ for (const i of allResumeDiv) {
     }
 }
 
-function duplicateExperienceForm(counter) {
-    const originalOutoutSet = document.getElementById("experience-info-output-container-0");
-    const newOutputSet = document.createElement("div");
-    newOutputSet.innerHTML = originalOutoutSet.innerHTML;
-    newOutputSet.id = `experience-info-output-container-${counter}`;
-    const newOutputSetResume = newOutputSet.getElementsByClassName("cv-field");
-    for (const newOutputElement of newOutputSetResume) {
-        newOutputElement.id = `${newOutputElement.id}-${counter}`;
-        newOutputElement.textContent = "";
-    }
-
-    newOutputSet.getElementsByClassName("comma")[0].classList.remove("hidden");
-    newOutputSet.getElementsByClassName("hyphen")[0].classList.remove("hidden");
-    experienceOutput.appendChild(newOutputSet);
-}
-
 
 // Clear localStorage on back button
 backBtn.addEventListener("click", function (e) {
@@ -57,12 +43,6 @@ dropdown.addEventListener("click", function (e) {
     list.classList.toggle("hidden");
 });
 
-for (const item of listItems) {
-    item.addEventListener("click", function (e) {
-        degree.value = e.target.textContent;
-        list.classList.toggle("hidden");
-    });
-}
 
 document.addEventListener("click", (e) => {
     const degreeForm = document.getElementById("form-degree");
@@ -71,15 +51,35 @@ document.addEventListener("click", (e) => {
     }
 });
 
+
+for (const item of listItems) {
+    item.addEventListener("click", function (e) {
+        degree.value = e.target.textContent;
+        list.classList.toggle("hidden");
+    });
+}
+
+
 addMoreEducationBtn.addEventListener("click", function () {
     extraEducationFormCounter++
-    duplicateForm(extraEducationFormCounter)
+    duplicateForm(extraEducationFormCounter, true)
     duplicateOutput(extraEducationFormCounter)
+    localStorage.setItem("extraEducationFormCounter", extraEducationFormCounter);
 })
 
 
 
-function duplicateForm(counter) {
+addBlurs(startInputElement)
+
+// add extra forms on reloand if needed
+extraEducationFormCounter = localStorage.getItem("extraEducationFormCounter");
+for (let i = 0; i < extraEducationFormCounter; i++) {
+    const newFormFields = duplicateForm(i + 1);
+    duplicateOutput(i + 1);
+    addBlurs(newFormFields);
+}
+
+function duplicateForm(counter, addBlurListener) {
     const originalFormSet = document.getElementById("education-information-form-conteiner-0")
     const newFormSet = document.createElement("div")
     newFormSet.innerHTML = originalFormSet.innerHTML
@@ -87,14 +87,19 @@ function duplicateForm(counter) {
     newFormSet.id = `education-information-form-conteiner-${counter}`
     const newFormSetInputs = newFormSet.querySelectorAll("input, textarea");
     for (const newFormElement of newFormSetInputs) {
+        newFormElement.value = ""
         newFormElement.name = `${newFormElement.name}-${counter}`
 
-
-        newFormElement.addEventListener("blur", function () {
-            localStorage.setItem(newFormElement.name, newFormElement.value)
-        })
+        if (addBlurListener) {
+            newFormElement.addEventListener("blur", function () {
+                localStorage.setItem(newFormElement.name, newFormElement.value)
+                updateResume(newFormElement);
+            })
+        }
     }
+
     educationFormChildren.appendChild(newFormSet)
+    return newFormSetInputs;
 }
 
 function duplicateOutput(counter) {
@@ -113,8 +118,22 @@ function duplicateOutput(counter) {
 }
 
 
+function addBlurs(inputElements) {
+    for (const element of inputElements) {
+        element.value = localStorage.getItem(element.name);
+        updateResume(element);
+        element.addEventListener("blur", function () {
+            localStorage.setItem(element.name, element.value);
+            updateResume(element);
+        });
+    }
+}
 
 
+function updateResume(element) {
+    const value = localStorage.getItem(element.name);
+    document.getElementById(element.name).textContent = value;
+}
 
 
 
