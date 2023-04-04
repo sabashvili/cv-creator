@@ -39,24 +39,32 @@ backBtn.addEventListener("click", function (e) {
 });
 
 //dropdown options
-dropdown.addEventListener("click", function (e) {
-    list.classList.toggle("hidden");
-});
-
-
-document.addEventListener("click", (e) => {
-    const degreeForm = document.getElementById("form-degree");
-    if (!degreeForm.contains(e.target)) {
-        list.classList.add("hidden");
-    }
-});
-
-
-for (const item of listItems) {
-    item.addEventListener("click", function (e) {
-        degree.value = e.target.textContent;
-        list.classList.toggle("hidden");
+addDropDown(dropdown, list)
+function addDropDown(dropDownItem, listItem) {
+    dropDownItem.addEventListener("click", function (e) {
+        listItem.classList.toggle("hidden");
     });
+}
+
+
+closeDropDown("form-degree", list)
+function closeDropDown(formDegree, listItem) {
+    document.addEventListener("click", (e) => {
+        const degreeForm = document.getElementById(formDegree);
+        if (!degreeForm.contains(e.target)) {
+            listItem.classList.add("hidden");
+        }
+    });
+}
+
+setValueList(listItems, degree, list)
+function setValueList(listElements, formDegree, listItem) {
+    for (const item of listElements) {
+        item.addEventListener("click", function (e) {
+            formDegree.value = e.target.textContent;
+            listItem.classList.toggle("hidden");
+        });
+    }
 }
 
 
@@ -70,7 +78,6 @@ addMoreEducationBtn.addEventListener("click", function () {
 
 
 addBlurs(startInputElement)
-
 // add extra forms on reloand if needed
 extraEducationFormCounter = localStorage.getItem("extraEducationFormCounter");
 for (let i = 0; i < extraEducationFormCounter; i++) {
@@ -84,11 +91,21 @@ function duplicateForm(counter, addBlurListener) {
     const newFormSet = document.createElement("div")
     newFormSet.innerHTML = originalFormSet.innerHTML
 
+    const listDegree = newFormSet.getElementsByClassName("list-degree")
+    listDegree[0].id = `list-${counter}`
+    const extraListItems = newFormSet.getElementsByClassName("elements");
+
     newFormSet.id = `education-information-form-conteiner-${counter}`
     const newFormSetInputs = newFormSet.querySelectorAll("input, textarea");
     for (const newFormElement of newFormSetInputs) {
         newFormElement.value = ""
         newFormElement.name = `${newFormElement.name}-${counter}`
+
+        if (newFormElement.name.startsWith("cv-degreee")) {
+            newFormElement.parentNode.parentNode.id = `form-degree-${counter}`
+            newFormElement.parentNode.id = `dropdown-input-${counter}`
+            newFormElement.id = `degree-input-${counter}`
+        }
 
         if (addBlurListener) {
             newFormElement.addEventListener("blur", function () {
@@ -99,6 +116,12 @@ function duplicateForm(counter, addBlurListener) {
     }
 
     educationFormChildren.appendChild(newFormSet)
+    const extraList = document.getElementById(listDegree[0].id)
+    const extraDropDown = document.getElementById(`dropdown-input-${counter}`)
+    const degreeInput = document.getElementById(`degree-input-${counter}`)
+    addDropDown(extraDropDown, extraList)
+    closeDropDown(`form-degree-${counter}`, extraList)
+    setValueList(extraListItems, degreeInput, extraList)
     return newFormSetInputs;
 }
 
@@ -112,9 +135,7 @@ function duplicateOutput(counter) {
         newOutputElement.id = `${newOutputElement.id}-${counter}`
         newOutputElement.textContent = "";
     }
-
     educationOutputChildren.appendChild(newOutputSet)
-
 }
 
 
