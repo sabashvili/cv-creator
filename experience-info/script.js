@@ -60,7 +60,6 @@ experienceForm.addEventListener("submit", function (e) {
   if (finalResultValidation) {
     window.location.href = "../education-info/";
   }
-
 })
 
 

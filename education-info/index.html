@@ -23,12 +23,14 @@
         </div>
         <div class="header-line"></div>
 
-        <form class="eduation-form">
+        <form id="education-information-form" class="eduation-form">
             <div id="education-information-form-children">
                 <div id="education-information-form-conteiner-0">
                     <div class="form-university">
                         <label class="input-label">სასწავლებელი</label>
                         <input name="cv-university" class="university-input text-input" />
+                        <img class="validation-icon-success hidden  " src="../Images/sucsess.svg">
+                        <img class="validation-icon-error hidden  " src="../Images/unsucsess.svg">
                         <div class="input-hint">მინიმუმ 2 სიმბოლო</div>
                     </div>
 
@@ -39,6 +41,8 @@
                                 <input name="cv-degreee" type="button" value="აირჩიეთ ხარისხი"
                                     class="degree-input text-input" id="degree-input" />
                                 <img class="arrow" src="../Images/dropdown.svg" />
+                                <img class="validation-icon-success hidden   " src="../Images/sucsess.svg">
+                                <img class="validation-icon-error hidden " src="../Images/unsucsess.svg">
                             </div>
                             <ul id="list" class="list-degree hidden">
                                 <li class="elements">საშუალო სკოლის დიპლომი</li>
@@ -56,6 +60,8 @@
                         <div class="degree-end-form">
                             <label class="input-label">დამთავრების რიცხვი</label>
                             <input name="cv-degree-end-form" type="date" class="degree-end-input text-input" />
+                            <img class="validation-icon-success hidden  " src="../Images/sucsess.svg">
+                            <img class="validation-icon-error hidden " src="../Images/unsucsess.svg">
                         </div>
                     </div>
 
@@ -63,6 +69,8 @@
                         <label class="input-label">აღწერა</label>
                         <textarea name="cv-decription-education" class="description-education-input text-input"
                             cols="30" rows="10"></textarea>
+                        <img class="validation-icon-success hidden  " src="../Images/sucsess.svg">
+                        <img class="validation-icon-error hidden " src="../Images/unsucsess.svg">
                     </div>
 
                     <div class="line-education"></div>
