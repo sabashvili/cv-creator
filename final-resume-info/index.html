@@ -5,11 +5,100 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>რეზიუმე</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../common.css" />
 </head>
 
 <body>
-    <h1>Shota</h1>
+    <div class="page-headline">
+        <a id="go-to-restart" href="../index.html">
+            <div class="icon-background-resume">
+                <img class="back-icon" src="../Images/Vector.svg" alt="back-icon" />
+            </div>
+        </a>
+    </div>
+
+
+    <div class="final-resume" id="final-resume">
+        <div id="peronal-info-output">
+            <div class="full-name">
+                <div id="cv-first-name" class="output-first-name"></div>
+                <div id="cv-last-name" class="output-last-name"></div>
+            </div>
+
+            <div class="mail-infromation">
+                <img id="email-logo" class="email-symbol" src="../Images/email symbol.svg" alt="email symbol" />
+                <div id="cv-email" class="output-email"></div>
+            </div>
+
+            <div class="tel-information">
+                <img id="phone-logo" class="tel-icon" src="../Images/tel.svg" alt="phone" />
+                <div id="cv-number" class="output-number"></div>
+            </div>
+
+            <div id="label-about-me" class="output-about-me-label">
+                ᲩᲔᲛ ᲨᲔᲡᲐᲮᲔᲑ
+            </div>
+            <div id="cv-about-me" class="output-about-me"></div>
+            <img id="cv-photo" class="final-output-photo" alt="portret" />
+
+            <div id="pers-end-line" class="pers-end-line"></div>
+        </div>
+
+        <div id="experience-info-output">
+            <div id="experience-info-output-container-0">
+                <div id="experience" class="label-experience ">
+                    ᲒᲐᲛᲝᲪᲓᲘᲚᲔᲑᲐ
+                </div>
+
+                <div id="position-and-employer" class="output-position-employer">
+                    <div id="cv-position" class="output-position cv-field"></div>
+                    <div id="position-comma" class="output-position  comma">,</div>
+                    <div id="cv-empleyer" class="output-employer cv-field"></div>
+                </div>
+
+                <div id="start-and-end-work" class="output-start-end-work">
+                    <div id="cv-start-work" class="output-start-work cv-field"></div>
+                    <div id="start-conection-end-work" class="start-conection-end-work  hyphen">
+                        -
+                    </div>
+                    <div id="cv-end-work" class="output-end-work cv-field"></div>
+                </div>
+
+                <div id="cv-description" class="output-description-position cv-field"></div>
+
+                <div id="line-from-description-position" class="line-from-description-position "></div>
+            </div>
+        </div>
+
+
+        <div id="education-info-output">
+            <div id="education-info-output-container-0">
+                <div id="experience" class="label-education ">
+                    ᲒᲐᲜᲐᲗᲚᲔᲑᲐ
+                </div>
+
+                <div id="University-and-degree" class="output-university-degree">
+                    <div id="cv-university" class="output-university cv-field"></div>
+                    <div id="education-comma" class="output-education  comma">,</div>
+                    <div id="cv-degreee" class="output-degree cv-field"></div>
+                </div>
+
+                <div id="cv-degree-end-form" class="output-end-education cv-field"></div>
+
+                <div id="cv-decription-education" class="output-education-description cv-field"></div>
+
+                <div id="line-from-description-position" class="line-from-description-position "></div>
+            </div>
+        </div>
+        <div class="alert">
+            <div class="alert-message">
+                რეზიუმე წარმატებით გაიგზავნა 🎉
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 
 </html>

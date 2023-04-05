@@ -7,6 +7,12 @@ body {
     display: flex;
 }
 
+
+.eduation-form {
+    overflow: scroll;
+    height: 1000px;
+}
+
 .form-university {
     position: relative;
     margin-left: 150px;
